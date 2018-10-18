@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
         res.render('fibonacci', {
             title:"Calculate Fibonacci numbers",
             fibonum: req.query.fibonum,
-            fiboval: math.fibonacci(req.query.fibonum)
+            fiboval: math.fibonacciLoop(req.query.fibonum)
         });
     } else {
         res.render('fibonacci',{

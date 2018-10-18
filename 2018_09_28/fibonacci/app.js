@@ -13,13 +13,16 @@ var app = express(); //function which accepts request and response objects as pa
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-//middleware
+//middleware. Note that the order of the applied middleware migh be meaningful! Also if you only want to use some
+//middleware in some routes, make sure to order them accordingly as the request falls through the entire found middleware stack before
+//hitting the route.
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//Using the required routers here. 
 app.use('/', indexRouter);
 app.use('/fibonacci', fibonacciRouter);
 
