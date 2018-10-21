@@ -1,3 +1,8 @@
+/**
+ * This example code shows reading file in three different ways - synchronously, asynchronously with callback
+ * and synchronously with Promise object. Here we also use arrow functions for fun.
+ * 
+ */
 var fs = require("fs");
 
 const fileToRead = 'exampleFile.txt';
