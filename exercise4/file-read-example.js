@@ -8,7 +8,8 @@ var fs = require("fs");
 const fileToRead = 'exampleFile.txt';
 
 
-var readExampleSync = (file) => {return fs.readFileSync(file)};
+var readExampleSync = (file) => { return fs.readFileSync(file) };
+
 
 var readExampleAsync = (file, callback) => fs.readFile(file, (err, result) => {
     if (err) {
@@ -19,7 +20,7 @@ var readExampleAsync = (file, callback) => fs.readFile(file, (err, result) => {
 });
 
 var readExampleAsyncWithPromise = (file) => {
-    return new Promise((resolve, reject) =>{
+    return new Promise((resolve, reject) => {
         fs.readFile(file, (err, contents) => {
             if (err) {
                 reject(err);
@@ -43,5 +44,6 @@ readExampleAsync(fileToRead, (contents) => {
 readExampleAsyncWithPromise(fileToRead)
     .then(result => {
         console.log("3. async with Promise: ")
-        console.log(result + "\n\n")})
+        console.log(result + "\n\n")
+    })
     .catch(error => console.log("Promise rejected with: " + error));
