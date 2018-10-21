@@ -1,0 +1,5 @@
+This here is the example text.
+
+Because it is too early in the morning and I haven't gotten my morning coffee yet,
+
+it is not terribly clever. Sorry if you expected more. :)
