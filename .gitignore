@@ -1,3 +1,5 @@
 #ignoring imported node modules
 
 node_modules/
+
+.log
