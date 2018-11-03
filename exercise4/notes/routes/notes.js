@@ -26,20 +26,53 @@ router.post('/save', (req, res, next) => {
     notePromise.then(note => {
         res.redirect('/notes/view?key=' + req.body.notekey);
     })
-    .catch(error => {next(error);});
+        .catch(error => { next(error); });
 });
 
-//View note
-router.get('/view', (req,res, next) => {
+//View Note
+router.get('/view', (req, res, next) => {
+    notes.read(req.query.key)
+        .then(note => {
+            res.render('noteview', {
+                title: note ? note.title : "",
+                notekey: req.query.key,
+                note: note
+            });
+        })
+        .catch(error => { next(error); });
+});
+
+//Edit Note
+router.get('/edit', (req, res, next) => {
+    notes.read(req.query.key)
+        .then(note => {
+            res.render('noteedit', {
+                title: note ? ("Edit " + note.title) : "Add a Note",
+                docreate: false,
+                notekey: req.query.key,
+                note: note
+            });
+        })
+        .catch(error => {next(err);});
+});
+
+//Delete Note
+router.get('/destroy', (req, res, next) => {
     notes.read(req.query.key)
     .then(note => {
-        res.render('noteview', {
+        res.render('notedestroy', {
             title: note ? note.title : "",
             notekey: req.query.key,
             note: note
         });
     })
     .catch(error => {next(error);});
-});
+})
+
+router.post('/destroy/confirm', (req,res,next) => {
+    notes.destroy(req.body.notekey)
+    .then(()=>{res.redirect('/'); })
+    .catch(error => {next(error);});
+})
 
 module.exports = router;
