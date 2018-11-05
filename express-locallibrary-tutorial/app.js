@@ -10,7 +10,7 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 var mongoose = require('mongoose');
-var mongoDB = 'mongodb://pseudoscience:kukkakaalisosekeitto@ds253353.mlab.com:53353/mp_local_library';
+var mongoDB = `mongodb://${config.get('MongoDB.user')}:${config.get('MongoDB.password')}@ds253353.mlab.com:53353/mp_local_library`;
 mongoose.connect(mongoDB);
 mongoose.Promise = global.Promise;
 var db = mongoose.connection;
