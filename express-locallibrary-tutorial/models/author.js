@@ -14,11 +14,12 @@ var AuthorSchema = new Schema(
 
 //get author's full name
 AuthorSchema
-.virtual('name')
+.virtual('fullname')
 .get(function () {
   return this.family_name + ', ' + this.first_name;
 });
 
+//what happens if we try to get lifespan of an Author that hasn't died?
 AuthorSchema
 .virtual('lifespan')
 .get(function () {

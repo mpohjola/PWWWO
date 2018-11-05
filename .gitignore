@@ -8,3 +8,6 @@ config/
 
 #logs
 .log
+
+#ignoring test script files
+populatedb.js
