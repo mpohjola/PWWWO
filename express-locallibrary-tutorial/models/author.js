@@ -25,6 +25,13 @@ AuthorSchema
 .virtual('lifespan')
 .get(function () {
   //console.log('new date get year: ' + new Date().getYear().toString());
+  return `${this.date_of_birth_formatted} -  ${this.date_of_death_formatted}`
+});
+
+AuthorSchema
+.virtual('lifespan_years')
+.get(function () {
+  //console.log('new date get year: ' + new Date().getYear().toString());
   return ((this.date_of_death ? this.date_of_death.getYear() : new Date().getYear()) - (this.date_of_birth ? this.date_of_birth.getYear() : new Date().getYear())).toString() + ' years';
 });
 
